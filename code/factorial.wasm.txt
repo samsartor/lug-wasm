@@ -1,0 +1,12 @@
+get_local 0
+i64.eqz
+if i64
+    i64.const 1
+else
+    get_local 0
+    get_local 0
+    i64.const 1
+    i64.sub
+    call 0
+    i64.mul
+end

@@ -6,12 +6,21 @@
 \usepackage[nodisplayskipstretch]{setspace}
 \usepackage{xspace}
 \usepackage{enumitem}
+\usepackage{array}
+
+\setminted{autogobble,breaklines,mathescape,fontsize=\tiny}
+
+\newcolumntype{C}{>{\centering\arraybackslash}p{0.3\textwidth}}
+\newcolumntype{D}{>{\centering\arraybackslash}p{0.6\textwidth}}
+
+\makeatletter
+\newlength\beamerleftmargin
+\setlength\beamerleftmargin{\Gm@lmargin}
+\makeatother
 
 \setitemize{label=\usebeamerfont*{itemize item}%
   \usebeamercolor[fg]{itemize item}
   \usebeamertemplate{itemize item}}
-
-\AtBeginEnvironment{minted}{\singlespacing\fontsize{10}{10}\selectfont}
 
 \AtBeginSection[]{
   \begin{frame}
@@ -86,8 +95,14 @@
 
 \begin{frame}{The Result}
     \begin{center}
-        \includegraphics[width=0.9\columnwidth]{graphics/js_the_good}
+        \includegraphics[width=\textwidth]{graphics/js_the_good}
     \end{center}
+\end{frame}
+
+\begin{frame}{This page uses 800 thousand lines of JavaScript}
+    \vspace*{-4pt}%
+    \hspace*{-\beamerleftmargin}%
+    \includegraphics[width=\paperwidth]{graphics/pivotal_tracker}
 \end{frame}
 
 \renewcommand{\secimage}{graphics/emscripten_icon}
@@ -117,7 +132,15 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{Why compile to JavaScript?}
+\begin{frame}{asm.js Example}
+    \begin{center}\begin{tabular}{CD}
+        C & asm.js \\
+        \inputminted{c}{code/factorial.c} &
+        \inputminted{js}{code/factorial.asm.js}
+    \end{tabular}\end{center}
+\end{frame}
+
+\begin{frame}{That was a Bad Idea}
     \splitslide{0.75}{1em}{
         JavaScript was designed for\dots
 
@@ -163,9 +186,21 @@
     \end{center}
 \end{frame}
 
+\begin{frame}{WASM Example}
+    \begin{center}\begin{tabular}{CCC}
+        C & WASM Text & WASM Binary \\
+        \inputminted{c}{code/factorial.c} &
+        \inputminted{asm}{code/factorial.wasm.txt} &
+        \inputminted{text}{code/factorial.wasm.hex}
+    \end{tabular}\end{center}
+\end{frame}
+
 \begin{frame}{Software in the Browser}
     \pmidg{\includegraphics[width=\columnwidth]{graphics/wasm_chain}}
 \end{frame}
+
+\renewcommand{\secimage}{graphics/javascript_disabled}
+\section{Practical WASM}
 
 \renewcommand{\secimage}{graphics/c_logo}
 \section{C/C++}
