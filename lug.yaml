@@ -1,0 +1,7 @@
+Title: Web Assembly
+Description: How to stop using Javascript, for fun and profit!
+Date: 2018-02-08
+Thumbnail: graphics/wasm_logo.png
+Files:
+    SlidesPDF: wasm.pdf
+    LaTeX: wasm.tex
