@@ -63,8 +63,39 @@
 \newcommand{\secimage}{graphics/html_icon}
 \section{Client Code}
 
-\begin{frame}{Introduction}
+\begin{frame}{What is a website?}
+    \splitslide{0.7}{1em}{
 
+        A website is really just a fancy document, temporarily downloaded from
+        some remote computer system.
+
+        \vspace{2ex}
+
+        Indeed, Sir Tim Berners-Lee created the world-wide-web as a way of
+        sharing research papers.
+
+        \vspace{2ex}
+
+        These documents contain text, images, and styling information.
+
+    }{\pmidg{
+        \includegraphics[width=\columnwidth]{graphics/cyrillic_doc}
+    }}
+\end{frame}
+
+\begin{frame}{Interactive Websites}
+    \splitslide{0.7}{1em}{
+
+        Is it possible to make websites interactive?
+
+        \vspace{2ex}
+
+        We would have to include some instructions along with the document. We
+        need some kind of scripting language for webpages.
+
+    }{\pmidg{
+        \includegraphics[width=\columnwidth]{graphics/buttons}
+    }}
 \end{frame}
 
 \renewcommand{\secimage}{graphics/sad_js}
@@ -199,7 +230,7 @@
     \pmidg{\includegraphics[width=\columnwidth]{graphics/wasm_chain}}
 \end{frame}
 
-\renewcommand{\secimage}{graphics/javascript_disabled}
+\renewcommand{\secimage}{graphics/js_disabled}
 \section{Practical WASM}
 
 \renewcommand{\secimage}{graphics/c_logo}
@@ -210,5 +241,20 @@
 
 \renewcommand{\secimage}{graphics/stdweb_logo}
 \section{stdweb}
+
+\renewcommand{\secimage}{graphics/parcel_logo}
+\section{parcel}
+
+\begin{frame}{Bundeling JS and Rust}
+
+In \texttt{main.js}:
+
+\inputminted{js}{code/add.js}
+
+In \texttt{add.rs}:
+
+\inputminted{rust}{code/add.rs}
+
+\end{frame}
 
 \end{document}
