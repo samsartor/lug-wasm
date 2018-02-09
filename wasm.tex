@@ -236,25 +236,136 @@
 \renewcommand{\secimage}{graphics/c_logo}
 \section{C/C++}
 
+\begin{frame}[fragile]{emsdk}
+
+    We can use the emscripten sdk to compile C/C++ to JavaScript and WASM.
+
+    \vspace{2ex}
+
+    Emscripten can build a test HTML webpage, JavaScript file, or a pure wasm
+    library.
+
+    \begin{minted}[fontsize=\footnotesize]{bash}
+        $ emcc demo.c -s WASM=1 -o demo.html
+        $ emcc demo.c -s WASM=1 -o demo.js
+        $ emcc demo.c -s WASM=1 -s SIDE_MODULE=1 -o demo.wasm 
+    \end{minted}
+
+\end{frame}
+
 \renewcommand{\secimage}{graphics/rust_logo}
 \section{Rust}
 
+\begin{frame}{The Rust Language}
+    \splitslide{0.57}{1em}{
+
+        \textbf{Rust} is a systems programming language that runs blazingly fast,
+        prevents segfaults, and guarantees thread safety.
+
+    } {
+        \inputminted{rust}{code/demo.rs}
+    }
+\end{frame}
+
+\begin{frame}[fragile]{Rust Toolchains}
+
+    Rust can be easily compiled to JavaScript and WebAssembly!
+
+    \vspace{2ex}
+
+    You can install a WASM toolchain by running \\
+    \texttt{\$ rustup toolchain add wasm32-*-*}
+
+    \vspace{2ex}
+
+    The available toolchains are:
+
+    \begin{tabular}{rl}
+        \texttt{wasm32-unknown-unknown} & compile to pure WASM \\
+        \texttt{wasm32-unknown-emscripten} & compile to a WASM executable \\
+        \texttt{asmjs-unknown-emscripten} & compile to JavaScript \\
+    \end{tabular}
+
+\end{frame}
+
+\begin{frame}[fragile]{Cargo}
+    Rust comes with a build system called \textbf{Cargo}.
+
+    \vspace{2ex}
+
+    \begin{minted}{bash}
+$ cargo run
+   Finished helloworld [unoptimized + debuginfo] target(s) in 0.0 secs
+    Running `target/debug/helloworld`
+Hello, world!
+    \end{minted}
+
+    Cargo can target WASM!
+
+    \begin{minted}{bash}
+$ cargo build --target wasm32-unknown-emscripten
+   Compiling helloworld v0.1.0 (file:///home/sam/Code/helloworld)
+    Finished dev [unoptimized + debuginfo] target(s) in 1.26 sec
+$ cd target/wasm32-unknown-emscripten/debug/
+$ node helloworld.js
+Hello, world!
+    \end{minted}
+
+\end{frame}
+
 \renewcommand{\secimage}{graphics/stdweb_logo}
 \section{stdweb}
+
+\begin{frame}{Interact}
+
+    The whole point is to make interactive websites. How can we edit HTML
+    through Rust? How do we make Rust web development feasible?
+
+    \vspace{1cm}
+
+    \begin{center}
+        Introducing\dots\\
+        \vspace{0.2cm}
+        \includegraphics[height=3cm]{graphics/stdweb.png}
+    \end{center}
+    
+\end{frame}
 
 \renewcommand{\secimage}{graphics/parcel_logo}
 \section{parcel}
 
 \begin{frame}{Bundeling JS and Rust}
 
+We can use Parcel to bundle JS and WASM into the same project.
+
 In \texttt{main.js}:
 
-\inputminted{js}{code/add.js}
+\inputminted[fontsize=\footnotesize]{js}{code/add.js}
 
 In \texttt{add.rs}:
 
-\inputminted{rust}{code/add.rs}
+\inputminted[fontsize=\footnotesize]{rust}{code/add.rs}
 
 \end{frame}
+
+\renewcommand{\secimage}{graphics/together}
+\section{Putting it all Together}
+
+\begin{frame}{Conclusion}
+    \splitslide{0.72}{1em}{
+        \begin{itemize}
+            \item Faster websites
+            \item Written in any language
+            \item With desktop libraries
+            \item With native graphics
+            \item With modern tools
+        \end{itemize}
+    }{\pmidg{
+        \includegraphics[width=\columnwidth]{graphics/mcode}
+    }}
+\end{frame}
+
+\renewcommand{\secimage}{graphics/questions}
+\section{Questions?}
 
 \end{document}
