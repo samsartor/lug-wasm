@@ -124,7 +124,7 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{The Result}
+\begin{frame}{\texttt{!![]+!![]}}
     \begin{center}
         \includegraphics[width=\textwidth]{graphics/js_the_good}
     \end{center}
@@ -197,7 +197,7 @@
 \end{frame}
 
 \renewcommand{\secimage}{graphics/wasm_logo}
-\section{Web Asssembly}
+\section{Web Assembly}
 
 \begin{frame}{Which Direction?}
     \begin{center}
@@ -328,6 +328,30 @@ Hello, world!
         \vspace{0.2cm}
         \includegraphics[height=3cm]{graphics/stdweb.png}
     \end{center}
+    
+\end{frame}
+
+\begin{frame}{Communicate}
+
+    \texttt{stdweb} provides JavaScript's abilities within Rust:
+    
+    \inputminted[fontsize=\footnotesize]{rust}{code/js.sw.rs}
+    
+    We can connect to buttons and other page elements:
+    
+    \inputminted[fontsize=\footnotesize]{rust}{code/button.sw.rs}
+    
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{cargo-web}}
+
+    We can install the \texttt{cargo-web} tool to make Rust WASM even easier!
+
+    \begin{minted}[fontsize=\footnotesize]{bash}
+$ cargo web start
+    Finished release [optimized] target(s) in 0.0 secs
+    You can access the web server at `http://127.0.0.1:8000`.
+    \end{minted}
     
 \end{frame}
 
